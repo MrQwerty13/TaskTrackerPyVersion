@@ -6,7 +6,7 @@
 
 # Import all necessaries
 from Entities.task_item import TaskItem
-from Entities.task_item_atributies import TaskItemStatus
+from Entities.task_enum import TaskItemStatus
 
 import os
 
@@ -56,7 +56,7 @@ class TaskRepo:
             line = line.replace("\n", "")
             _id_str, _name, _status_str = line.split(" | ")
 
-            _id = int(_id_str)
+            _id = int(_id_str.replace("ID: ", ""))
             _status = TaskItemStatus.DONE if (_status_str == TaskItemStatus.DONE.value) else TaskItemStatus.UNDONE
 
             formatted_data[_id] = TaskItem(

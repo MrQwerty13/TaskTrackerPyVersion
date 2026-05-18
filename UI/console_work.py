@@ -22,7 +22,7 @@ class ConsoleWork:
 
         def tasks():
             for task in self._task_repo.read_file():
-                print(task, '\n')
+                print(task)
 
         def options():
             print("=== Options ===")
@@ -35,7 +35,7 @@ class ConsoleWork:
             logo()
             tasks()
             options()
-            user_choice = input("Enter your choice: ")
+            user_choice = int(input("Enter your choice: "))
             match user_choice:
                 case 1:
                     name = input("Enter task name: ")
@@ -51,5 +51,6 @@ class ConsoleWork:
                     self._task_repo.write_file(self._keeper.tasks())
                 case 4:
                     print("Exiting...")
+                    break
                 case _:
                     print("Invalid input")

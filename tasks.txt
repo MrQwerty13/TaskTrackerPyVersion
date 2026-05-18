@@ -1,0 +1,2 @@
+ID: 1 | NAME: NAME: to make commit | STATUS: ✕
+ID: 2 | NAME: to exit | STATUS: ✓

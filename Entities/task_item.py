@@ -5,7 +5,7 @@
 #
 
 # Import all necessaries
-from task_item_atributies import TaskItemStatus
+from Entities.task_enum import TaskItemStatus
 
 
 class TaskItem:

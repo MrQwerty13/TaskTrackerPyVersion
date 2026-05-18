@@ -1,5 +1,5 @@
 #
-#   file name: task_item_atributies.py
+#   file name: task_enum.py
 #   author: MrQwerty13 (Mikhail Pozur)
 #   date of creation: 18.05.2026 (UTC+3)
 #

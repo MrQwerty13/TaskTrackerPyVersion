@@ -6,7 +6,7 @@
 
 # Import all necessaries
 from Entities.task_item import TaskItem
-from Entities.task_item_atributies import TaskItemStatus
+from Entities.task_enum import TaskItemStatus
 
 
 class TaskKeeper:
@@ -37,10 +37,13 @@ class TaskKeeper:
         self._tasks = tasks
 
     def add_task(self, name: str) -> bool:
-        _id = max(self._tasks.keys()) + 1
-        if _id <= 10:
-            self._tasks[_id] = TaskItem(_id, name)
-            return True
+        if len(self._tasks.keys()) > 0:
+            _id = max(self._tasks.keys()) + 1
+            if _id <= 10:
+                self._tasks[_id] = TaskItem(_id, name)
+                return True
+        else:
+            self._tasks[1] = TaskItem(1, name)
         return False
 
     def remove_task(self, _id: int) -> bool:
