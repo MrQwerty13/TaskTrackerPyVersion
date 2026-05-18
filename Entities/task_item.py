@@ -23,3 +23,12 @@ class TaskItem:
         self._id = _id
         self._name = _name
         self._status = _status
+
+    def id(self) -> int:
+        return self._id
+
+    def name(self) -> str:
+        return self._name
+
+    def status(self) -> TaskItemStatus:
+        return self._status
