@@ -1,8 +1,38 @@
+#
+#   file name: task_keeper.py
+#   author: MrQwerty13 (Mikhail Pozur)
+#   date of creation: 18.05.2026 (UTC+3)
+#
+
+# Import all necessaries
 from Entities.task_item import TaskItem
 from Entities.task_item_atributies import TaskItemStatus
 
 
 class TaskKeeper:
+    """
+        Task Keeper:
+            Attributes:
+                _tasks (dict[int, TaskItem]):
+                    dictionary of task items
+
+            Methods:
+                add_task:
+                    :argument - name of task to add (str)
+                    :return - True if task was added else False
+
+                remove_task:
+                    :argument - _id of task to remove (int)
+                    :return - True if task was removed else False
+
+                change_task_status:
+                    :argument - _id of task to change (int)
+                    :return - True if task's status was changed else False
+
+                tasks:
+                    :argument - None
+                    :return - dictionary of task items (dict[int, TaskItem])
+    """
     def __init__(self, tasks: dict[int, TaskItem]) -> None:
         self._tasks = tasks
 
