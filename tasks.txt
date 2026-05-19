@@ -1,6 +1,0 @@
-ID: 1 | NAME: 1 | STATUS: ✕
-ID: 3 | NAME: 3 | STATUS: ✕
-ID: 5 | NAME: 5 | STATUS: ✕
-ID: 7 | NAME: 7 | STATUS: ✕
-ID: 9 | NAME: 9 | STATUS: ✕
-ID: 2 | NAME: 2 | STATUS: ✕
