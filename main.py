@@ -19,5 +19,15 @@ def main_tkinter():
     tkinter_work = TkinterWork()
     tkinter_work.run()
 
+def main():
+    app_view = input("Choose app view (C - console / W - windowed): ")
+    if app_view == "C":
+        main_console()
+    elif app_view == "W":
+        main_tkinter()
+    else:
+        print("Invalid choice.")
+        main()
+
 if __name__ == "__main__":
-    main_tkinter()
+    main()
