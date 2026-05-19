@@ -54,10 +54,13 @@ class TaskRepo:
 
         for line in to_format:
             line = line.replace("\n", "")
-            _id_str, _name, _status_str = line.split(" | ")
+            _id_str, _name_str, _status_str = line.split(" | ")
 
             _id = int(_id_str.replace("ID: ", ""))
-            _status = TaskItemStatus.DONE if (_status_str == TaskItemStatus.DONE.value) else TaskItemStatus.UNDONE
+            _name = (_name_str.replace("NAME: ", "")).replace("\n", "")
+            _status = TaskItemStatus.DONE \
+                if (_status_str.replace("Status: ", "") == TaskItemStatus.DONE.value) \
+                else TaskItemStatus.UNDONE
 
             formatted_data[_id] = TaskItem(
                 _id, _name, _status
