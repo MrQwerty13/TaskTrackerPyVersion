@@ -1,0 +1,16 @@
+# Byte-compiled / optimized / DLL files
+*.py[co]
+*$py.class
+
+# C extensions
+.libs/
+build/
+
+# Virtual environments
+.venv
+
+# IDEs and editors
+.idea
+
+# Tasks tracker files
+tasks.txt
