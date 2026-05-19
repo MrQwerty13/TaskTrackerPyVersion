@@ -4,9 +4,16 @@
 #   date of creation: 18.05.2026 (UTC+3)
 #
 
-# Import all necessaries
+"""Entry point for the Task Tracker application."""
+
 from UI.console_work import ConsoleWork
 
 
-task_tracker = ConsoleWork(True, "tasks.txt")
-task_tracker.run()
+def main_console():
+    """Create and run the console-based task tracker."""
+    task_tracker = ConsoleWork(running=True, file_name="tasks.txt")
+    task_tracker.run()
+
+
+if __name__ == "__main__":
+    main_console()

@@ -4,9 +4,7 @@
 #   date of creation: 18.05.2026 (UTC+3)
 #
 
-# Import all necessaries
 from Keeper.task_keeper import TaskKeeper
-
 from Repository.task_repo import TaskRepo
 
 
@@ -17,40 +15,67 @@ class ConsoleWork:
         self._keeper = TaskKeeper(self._task_repo.format_data())
 
     def run(self) -> None:
-        def logo():
-            print("=== Tasks ===")
-
-        def tasks():
-            for task in self._task_repo.read_file():
-                print(task)
-
-        def options():
-            print("=== Options ===")
-            print("1. Add task")
-            print("2. Remove task")
-            print("3. Change task status")
-            print("4. Exit")
-
         while self._running:
-            logo()
-            tasks()
-            options()
-            user_choice = int(input("Enter your choice: "))
-            match user_choice:
-                case 1:
-                    name = input("Enter task name: ")
-                    self._keeper.add_task(name)
-                    self._task_repo.write_file(self._keeper.tasks())
-                case 2:
+            self._show_logo()
+            self._show_tasks()
+            self._show_options()
+
+            try:
+                choice = int(input("Enter your choice: "))
+            except ValueError:
+                print("Invalid input – please enter a number.")
+                continue
+
+            if choice == 1:
+                name = input("Enter task name: ").strip()
+                if self._keeper.add_task(name):
+                    print(f"Task '{name}' added.")
+                else:
+                    print("Failed to add task. Task list may be full.")
+            elif choice == 2:
+                try:
                     _id = int(input("Enter task id: "))
-                    self._keeper.remove_task(_id)
-                    self._task_repo.write_file(self._keeper.tasks())
-                case 3:
+                except ValueError:
+                    print("Invalid ID – must be a number.")
+                    continue
+                if self._keeper.remove_task(_id):
+                    print(f"Task {_id} removed.")
+                else:
+                    print(f"No task with ID {_id}.")
+            elif choice == 3:
+                try:
                     _id = int(input("Enter task id: "))
-                    self._keeper.change_task_status(_id)
-                    self._task_repo.write_file(self._keeper.tasks())
-                case 4:
-                    print("Exiting...")
-                    break
-                case _:
-                    print("Invalid input")
+                except ValueError:
+                    print("Invalid ID – must be a number.")
+                    continue
+                if self._keeper.change_task_status(_id):
+                    print(f"Task {_id} status toggled.")
+                else:
+                    print(f"No task with ID {_id}.")
+            elif choice == 4:
+                print("Exiting...")
+                break
+            else:
+                print("Invalid choice – please enter 1, 2, 3 or 4.")
+
+            # Persist changes to file after any modification
+            self._task_repo.write_file(self._keeper.tasks())
+
+    def _show_logo(self):
+        print("\n=== Tasks ===")
+
+    def _show_tasks(self):
+        # Display from keeper for a consistent in‑memory view
+        tasks = self._keeper.tasks()
+        if not tasks:
+            print("(no tasks)")
+        else:
+            for _id, task in sorted(tasks.items()):
+                print(f"ID: {_id} | NAME: {task.name()} | STATUS: {task.status().value}")
+
+    def _show_options(self):
+        print("=== Options ===")
+        print("1. Add task")
+        print("2. Remove task")
+        print("3. Change task status")
+        print("4. Exit")

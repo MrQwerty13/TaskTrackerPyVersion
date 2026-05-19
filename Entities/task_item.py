@@ -19,10 +19,10 @@ class TaskItem:
                 _status (TaskItemStatus):
                     status of the TaskItem which is given by default
     """
-    def __init__(self, _id: int, _name: str, _status: TaskItemStatus = TaskItemStatus.UNDONE):
-        self._id = _id
-        self._name = _name
-        self._status = _status
+    def __init__(self, id: int, name: str, status: TaskItemStatus = TaskItemStatus.UNDONE):
+        self._id = id
+        self._name = name
+        self._status = status
 
     def id(self) -> int:
         return self._id
@@ -32,3 +32,10 @@ class TaskItem:
 
     def status(self) -> TaskItemStatus:
         return self._status
+
+    def toggle_status(self) -> None:
+        """Switch status between DONE and UNDONE."""
+        self._status = (
+            TaskItemStatus.UNDONE if self._status == TaskItemStatus.DONE
+            else TaskItemStatus.DONE
+        )

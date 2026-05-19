@@ -33,35 +33,33 @@ class TaskKeeper:
                     :argument - None
                     :return - dictionary of task items (dict[int, TaskItem])
     """
+    MAX_TASKS = 10   # maximum number of tasks allowed
+
     def __init__(self, tasks: dict[int, TaskItem]) -> None:
         self._tasks = tasks
 
     def add_task(self, name: str) -> bool:
-        if len(self._tasks.keys()) > 0:
-            _id = max(self._tasks.keys()) + 1
-            if _id <= 10:
+        """Add a new task with the smallest available ID (1..MAX_TASKS)."""
+        if len(self._tasks) >= self.MAX_TASKS:
+            return False
+
+        # Find the first unused ID
+        for _id in range(1, self.MAX_TASKS + 1):
+            if _id not in self._tasks:
                 self._tasks[_id] = TaskItem(_id, name)
                 return True
-        else:
-            self._tasks[1] = TaskItem(1, name)
-        return False
+        return False   # should never be reached due to the length check
 
     def remove_task(self, _id: int) -> bool:
-        if _id in self._tasks.keys():
+        if _id in self._tasks:
             self._tasks.pop(_id)
             return True
         return False
 
     def change_task_status(self, _id: int) -> bool:
-        if _id in self._tasks.keys():
-            task = self._tasks[_id]
-            match (task._status):
-                case TaskItemStatus.DONE:
-                    task._status = TaskItemStatus.UNDONE
-                    return True
-                case TaskItemStatus.UNDONE:
-                    task._status = TaskItemStatus.DONE
-                    return True
+        if _id in self._tasks:
+            self._tasks[_id].toggle_status()
+            return True
         return False
 
     def tasks(self) -> dict[int, TaskItem]:
