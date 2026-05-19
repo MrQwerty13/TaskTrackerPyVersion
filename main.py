@@ -7,6 +7,7 @@
 """Entry point for the Task Tracker application."""
 
 from UI.console_work import ConsoleWork
+from UI.tkinter_work import TkinterWork
 
 
 def main_console():
@@ -14,6 +15,9 @@ def main_console():
     task_tracker = ConsoleWork(running=True, file_name="tasks.txt")
     task_tracker.run()
 
+def main_tkinter():
+    tkinter_work = TkinterWork()
+    tkinter_work.run()
 
 if __name__ == "__main__":
-    main_console()
+    main_tkinter()
