@@ -9,6 +9,7 @@
 
 from UI.console_work import ConsoleWork
 from UI.tkinter_work import TkinterWork
+from UI.takinter_work_ai import TkinterWorkAI
 
 
 def main_console():
@@ -22,6 +23,9 @@ def main_tkinter():
     tkinter_work = TkinterWork(file_name="tasks.txt")
     tkinter_work.run()
 
+def main_ai():
+    ai_ui = TkinterWorkAI(file_name="tasks.txt")
+    ai_ui.run()
 
 def main():
     print("Task Tracker")
@@ -31,7 +35,7 @@ def main():
             main_console()
             break
         elif choice == "W":
-            main_tkinter()
+            main_ai()
             break
         elif choice == "Q":
             print("Goodbye!")

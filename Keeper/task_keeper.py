@@ -5,7 +5,6 @@
 #
 
 from Entities.task_item import TaskItem
-from Entities.task_enum import TaskItemStatus
 
 
 class TaskKeeper:

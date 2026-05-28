@@ -1,0 +1,9 @@
+ID: 1 | NAME: Buy groceries | STATUS: ✓
+ID: 2 | NAME: Finish project report | STATUS: ✓
+ID: 3 | NAME: Call dentist for appointment | STATUS: ✓
+ID: 4 | NAME: Read chapter 5 of textbook | STATUS: ✓
+ID: 5 | NAME: Update resume | STATUS: ✓
+ID: 6 | NAME: Plan weekend trip | STATUS: ✕
+ID: 7 | NAME: Submit tax documents | STATUS: ✓
+ID: 8 | NAME: Organize desk drawer | STATUS: ✓
+ID: 9 | NAME: Learn Python decorators | STATUS: ✕
